@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
 ext {
-    versionFile = project.file("VERSION")
+    versionFile = project.file("../VERSION")
     versionText = versionFile.readLines()[0].trim()
 }
 
