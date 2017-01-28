@@ -8,12 +8,12 @@ import org.junit.Test
 class ButaiActivityLifecycleCallbacksTest {
     private val butai = ButaiActivityLifecycleCallbacks()
 
-    @Test fun `test when butai calls onActivityStarted, isReturnedFromBackground() is true`() {
+    @Test fun `test when one activity start, isReturnedFromBackground() is true`() {
         butai.onActivityStarted(null)
         assertTrue(butai.isReturnedFromBackground())
     }
 
-    @Test fun `test when activity goes background, isBackground() is true`() {
+    @Test fun `test when App goes to background, isBackground() is true`() {
         butai.onActivityStarted(null)
         butai.onActivityStopped(null)
         assertTrue(butai.isBackground())
@@ -26,7 +26,7 @@ class ButaiActivityLifecycleCallbacksTest {
         assertTrue(butai.isForeground())
     }
 
-    @Test fun `test when 2 activities start and one end, isReturnedFromBackground() is false`() {
+    @Test fun `test when 2 activities start and one end, isReturnedFromBackground() is false and isForeground() is true`() {
         butai.onActivityStarted(null)
         butai.onActivityStarted(null)
         butai.onActivityStopped(null)
