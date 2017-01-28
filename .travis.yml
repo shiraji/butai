@@ -1,0 +1,28 @@
+language: android
+env:
+  global:
+  - secure: Qr51E8jiQzBtMakxS4zYmguNC37hENOWK6sO+gwly+5y2FypuBvp+iKIyJ3/ymfA5sUeI44L+6SwlsQO1zzzUmdFhp6p1P71O4GLygCr2HSOcsNPLNdQnX+/dMfoPgc6d1LdXmJSRMbodNlb2vK1PpJQQ3zl3AFkm9LFRE/qNeLQbgx+YmTLlKwajR5rG35SdH3kPAG1ixKW5ACSvNwVySCk/C9esA2ECVI+Ujsg9d7WVNRFlbqFJZFLFdMYKmMWsFQS2wIlVC+446RLegtuzDinjO7A9oZXqWUiQedZfB1dW/sMQcuPq0lMtROA7+HNv6kjwjHoYNj02R9BYr717vfOBev/JCxz022ncRNcULgHS97h9Eb1RIVigZCgOQCkhiFCQ3WAdyaHUO4sG43qsgzG/eML8adc6VNPa0bB3zgxX1LI464f2ClQvPiXny+kpkyqsQ7Fky/XjEYenecvlfWoicssxc6dACseYxNxTLi1IuGzwSXiTccSyHL4gXEg/OlIOvHMJgm3mHVa4eBDm4iG/vXDj2eSzQlg9RGjJlR9Y3uEXhuwVS7RAAU6gXYedsiDL83AnTYxlE7iDdbFiGqG8NI7zC6mnOgipDBezSPnqwA9/bjsGeBYmhDWqumqaara97JrxvoWOqGkTzjYmyqXFlxrmJbmGLBcxZyAsIg=
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-google-google_play_services
+    - extra-android-m2repository
+    - extra-android-support
+    - extra-google-m2repository
+jdk:
+- oraclejdk8
+script:
+- ./gradlew check --info --stacktrace
+notifications:
+  email: false
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
+after_success:
+- .travis/after_success.sh
+before_install:
+- .travis/before_install.sh
