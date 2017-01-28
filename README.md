@@ -1,7 +1,5 @@
 # butai
 
-This library is still alpha version. I don't recommend to use it at this moment.
-
 butai is the kotlin Android library that extends classes (e.g. custom Application) have the state that the application is in foreground, background or return from background.
 
 butai is inspired by [@yshrsmz](https://github.com/yshrsmz)'s [blog entry](http://yslibrary.net/2015/07/30/android_how_to_detect_app_is_background_or_not/) (in Japanese).
