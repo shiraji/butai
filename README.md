@@ -4,9 +4,9 @@ This library is still alpha version. I don't recommend to use it at this moment.
 
 butai is the kotlin Android library that extends classes (e.g. custom Application) have the state that the application is in foreground, background or return from background.
 
-butai is inspaired by [@yshrsmz](https://github.com/yshrsmz)'s [blog entry](http://yslibrary.net/2015/07/30/android_how_to_detect_app_is_background_or_not/) (in Japanese).
+butai is inspired by [@yshrsmz](https://github.com/yshrsmz)'s [blog entry](http://yslibrary.net/2015/07/30/android_how_to_detect_app_is_background_or_not/) (in Japanese).
 
-The main concept of this library is counting up the number of running Activities using `Application.ActivityLifecycleCallbacks`. Based on the number of running Activities, `Butai` class provide the status of the app.
+The main concept of this library is counting up the number of running Activities using `Application#ActivityLifecycleCallbacks`. Based on the number of running Activities, `Butai` provides the status of the application.
 
 # How to install?
 
@@ -31,7 +31,7 @@ class MyApplication : Application(), Butai by ButaiDelegate {
 
 That's it. Now, you are ready.
 
-# What is the status?
+# What the app status can get?
 
 `Butai` interface has following method signitures.
 
@@ -45,7 +45,7 @@ That's it. Now, you are ready.
 * `isBackground()` true if the app go to background, false otherwise.
 * `isForeground()` true if the app is on foreground, false otherwise.
 
-# How to get status
+# How to get the app status?
 
 `MyApplication` class above delegate these methods using Class Delegation.
 
@@ -69,7 +69,7 @@ class MainAktivity : AppCompatActivity() {
 }
 ```
 
-So, DO NOT CALL `Butai`'s methods at `onCreate` or `onDestroy`.
+So, DO NOT relay `Butai`'s return values in `onCreate` or `onDestroy`.
 
 # License
 
