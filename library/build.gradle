@@ -2,6 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
+ext {
+    versionFile = project.file("VERSION")
+    versionText = versionFile.readLines()[0].trim()
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -10,7 +15,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName VERSION
+        versionName versionText
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -34,7 +39,7 @@ publish {
     userOrg = 'shiraji'
     groupId = GROUPID
     artifactId = ARTIFACTID
-    version = VERSION
+    version = versionText
     description = 'Extend classes that have the status the app is foreground/background/just appearing'
     website = 'https://github.com/shiraji/butai'
     licences = ['Apache-2.0']
