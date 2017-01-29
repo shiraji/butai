@@ -26,7 +26,10 @@ internal class ButaiActivityLifecycleCallbacks : Application.ActivityLifecycleCa
 
     override fun onActivityStopped(p0: Activity?) {
         runningActivities--
-        if (runningActivities == 0) appStatus = AppStatus.BACKGROUND
+        if (runningActivities <= 0) {
+            appStatus = AppStatus.BACKGROUND
+            runningActivities = 0
+        }
     }
 
     override fun onActivityPaused(p0: Activity?) = Unit
