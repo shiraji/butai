@@ -8,7 +8,7 @@ public class ButaiActivityLifecycleCallbacks implements Application.ActivityLife
 
     private int runningActivities = 0;
 
-    private AppStatus appStatus = AppStatus.FOREGROUND;
+    private AppStatus appStatus = AppStatus.JUST_APPEARED;
 
     @Override
     public void onActivityStarted(Activity activity) {

@@ -9,6 +9,12 @@ public class ButaiActivityLifecycleCallbacksTest {
     private ButaiActivityLifecycleCallbacks butai = new ButaiActivityLifecycleCallbacks();
 
     @Test
+    public void testOneActivityCreate() {
+        butai.onActivityCreated(null, null);
+        assertTrue(butai.isReturnedFromBackground());
+    }
+
+    @Test
     public void testOneActivity() {
         butai.onActivityStarted(null);
         assertTrue(butai.isReturnedFromBackground());
