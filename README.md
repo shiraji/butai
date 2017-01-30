@@ -1,42 +1,28 @@
 # butai
 
-butai is the kotlin Android library that extends classes (e.g. custom Application) have the state that the application is in foreground, background or return from background.
+butai is Android library that adds functions return the application is in foreground, background or return from background.
 
 butai is inspired by [@yshrsmz](https://github.com/yshrsmz)'s [blog entry](http://yslibrary.net/2015/07/30/android_how_to_detect_app_is_background_or_not/) (in Japanese).
 
-The main concept of this library is counting up the number of running Activities using `Application#ActivityLifecycleCallbacks`. Based on the number of running Activities, `Butai` provides the status of the application.
+The main logic of this library is that the library counts up the number of running Activities using `Application#ActivityLifecycleCallbacks`. Based on the number of running Activities, `Butai` provides the application is in foreground/background.
 
-# How to install?
+# How to install & setup?
 
-Use gradle where `LATEST_VERSION` is [![Download](https://api.bintray.com/packages/shiraji/maven/butai/images/download.svg)](https://bintray.com/shiraji/maven/butai/_latestVersion)
+butai has [Java](library-java) and [Kotlin](library) implementations. Each has different steps to install and setup.
 
-```gradle
-compile 'com.github.shiraji:butai:LATEST_VERSION'
-```
+Please read each README.
 
-# How to setup?
-
-butai setups is quite simple. Create a custom Application in kotlin. Implement Butai interface using Class Delegation. Then call `ButaiDelegate#init(Application)` to initialize.
-
-```kotlin
-class MyApplication : Application(), Butai by ButaiDelegate {
-    override fun onCreate() {
-        super.onCreate()
-        ButaiDelegate.init(this)
-    }
-}
-```
-
-That's it. Now, you are ready.
+* [Java](library-java/README.md)
+* [Kotlin](library/README.md)
 
 # What the app status can get?
 
-`Butai` interface has following method signitures.
+`Butai` interface has following method signatures in kotlin.
 
 ```kotlin
-    fun isReturnedFromBackground(): Boolean
-    fun isBackground(): Boolean
-    fun isForeground(): Boolean
+fun isReturnedFromBackground(): Boolean
+fun isBackground(): Boolean
+fun isForeground(): Boolean
 ```
 
 * `isReturnedFromBackground()` true if the app shows up to foreground, false otherwise. This is true until other Activity launch or kill the Activity.
@@ -46,8 +32,6 @@ That's it. Now, you are ready.
 # How to get the app status?
 
 `MyApplication` class above delegate these methods using Class Delegation.
-
-butai has a limitation that the status butai has is valid while the Activity lifecycle is from `onStart()` to `onStop()`.
 
 ```kotlin
 class MainAktivity : AppCompatActivity() {
@@ -66,8 +50,6 @@ class MainAktivity : AppCompatActivity() {
 
 }
 ```
-
-So, DO NOT relay `Butai`'s return values in `onCreate` or `onDestroy`.
 
 # License
 
