@@ -10,7 +10,7 @@ object ButaiDelegate : Butai {
         application.registerActivityLifecycleCallbacks(callback)
     }
 
-    override fun isReturnedFromBackground() = callback.isReturnedFromBackground()
-    override fun isBackground() = callback.isBackground()
-    override fun isForeground() = callback.isForeground()
+    override fun isReturnedFromBackground() = callback.isReturnedFromBackground
+    override fun isBackground() = callback.isBackground
+    override fun isForeground() = callback.isForeground
 }
