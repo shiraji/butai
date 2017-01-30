@@ -5,11 +5,6 @@ import android.app.Application
 import android.os.Bundle
 
 internal class ButaiActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks, Butai {
-    enum class AppStatus(val isForeground: Boolean) {
-        BACKGROUND(false),
-        JUST_APPEARED(true),
-        FOREGROUND(true);
-    }
 
     private var runningActivities = 0
 
@@ -39,6 +34,6 @@ internal class ButaiActivityLifecycleCallbacks : Application.ActivityLifecycleCa
     override fun onActivityResumed(p0: Activity?) = Unit
 
     override fun isReturnedFromBackground() = appStatus == AppStatus.JUST_APPEARED
-    override fun isBackground() = !isForeground()
+    override fun isBackground() = !isForeground
     override fun isForeground() = appStatus.isForeground
 }

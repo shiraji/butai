@@ -26,3 +26,23 @@ task clean(type: Delete) {
 subprojects {
     tasks.withType(Javadoc).all { enabled = false }
 }
+
+ext {
+    versionFile = project.file("VERSION")
+    versionText = versionFile.readLines()[0].trim()
+}
+
+task prepareForNextDevelopment << {
+    def versionParts = versionText.split(/\./)
+    versionParts[2] = (versionParts[2] as int) + 1
+    def newVersion = "${versionParts[0]}.${versionParts[1]}.${versionParts[2]}-SNAPSHOT"
+    versionFile.write(newVersion + "\n")
+}
+
+task prepareForRelease << {
+    def versionParts = versionText.split(/\./)
+    versionParts[2] = versionParts[2].split(/-/)[0]
+    def newVersion = "${versionParts[0]}.${versionParts[1]}.${versionParts[2]}"
+    versionFile.write(newVersion + "\n")
+    new File("$projectDir/.travis/release").createNewFile()
+}

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
@@ -10,11 +9,11 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName versionText
+        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
 
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -25,7 +24,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile project(":core")
 
     testCompile 'junit:junit:4.12'
@@ -34,7 +32,7 @@ dependencies {
 publish {
     userOrg = 'shiraji'
     groupId = GROUPID
-    artifactId = 'butai'
+    artifactId = 'butai-java'
     version = versionText
     description = 'Extend classes that have the status the app is foreground/background/just appearing'
     website = 'https://github.com/shiraji/butai'

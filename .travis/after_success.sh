@@ -30,7 +30,8 @@ else
   # Without snapshot
   if [ -f .travis/release ]; then
     echo "Start releasing..."
-    ./gradlew clean build bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
+    ./gradlew clean build :library:bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
+    ./gradlew :library-java:bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
     git checkout master
     git config user.name "Travis CI"
     git config user.email "isogai.shiraji@gmail.com"
