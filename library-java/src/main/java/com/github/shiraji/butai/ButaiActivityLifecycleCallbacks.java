@@ -4,27 +4,19 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-public class ButaiActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks, Butai {
+public class ButaiActivityLifecycleCallbacks implements
+        Application.ActivityLifecycleCallbacks, Butai {
 
-    private int runningActivities = 0;
-
-    private AppStatus appStatus = AppStatus.JUST_APPEARED;
+    private ButaiActivityLifecycleCallbacksDelegate delegate = new ButaiActivityLifecycleCallbacksDelegate();
 
     @Override
     public void onActivityStarted(Activity activity) {
-        if (runningActivities == 0) appStatus = AppStatus.JUST_APPEARED;
-        else if (runningActivities > 0) appStatus = AppStatus.FOREGROUND;
-        else appStatus = AppStatus.BACKGROUND;
-        runningActivities++;
+        delegate.onActivityStarted();
     }
 
     @Override
     public void onActivityStopped(Activity activity) {
-        runningActivities--;
-        if (runningActivities <= 0) {
-            appStatus = AppStatus.BACKGROUND;
-            runningActivities = 0;
-        }
+        delegate.onActivityStopped();
     }
 
     @Override
@@ -49,16 +41,16 @@ public class ButaiActivityLifecycleCallbacks implements Application.ActivityLife
 
     @Override
     public boolean isReturnedFromBackground() {
-        return appStatus == AppStatus.JUST_APPEARED;
+        return delegate.isReturnedFromBackground();
     }
 
     @Override
     public boolean isBackground() {
-        return !isForeground();
+        return delegate.isBackground();
     }
 
     @Override
     public boolean isForeground() {
-        return appStatus.isForeground;
+        return delegate.isForeground();
     }
 }
