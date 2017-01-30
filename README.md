@@ -4,7 +4,12 @@ butai is Android library that adds functions return the application is in foregr
 
 butai is inspired by [@yshrsmz](https://github.com/yshrsmz)'s [blog entry](http://yslibrary.net/2015/07/30/android_how_to_detect_app_is_background_or_not/) (in Japanese).
 
-The main logic of this library is that the library counts up the number of running Activities using `Application#ActivityLifecycleCallbacks`. Based on the number of running Activities, `Butai` provides the application is in foreground/background.
+The main logic of this library is that butai counts up the number of running Activities using `Application#ActivityLifecycleCallbacks`. Based on the sum of running Activities, `Butai` interface provides that the application is in foreground/background.
+
+# Prerequisite
+
+* minSdk must be higher than 14 (because of `Application#ActivityLifecycleCallbacks`)
+* Only one of Java/Kotlin implementation can be used. Not both of them
 
 # How to install & setup?
 
