@@ -8,6 +8,11 @@ import org.junit.Test
 class ButaiActivityLifecycleCallbacksTest {
     private val butai = ButaiActivityLifecycleCallbacks()
 
+    @Test fun `test when one activity create, isReturnedFromBackground() is true`() {
+        butai.onActivityCreated(null, null)
+        assertTrue(butai.isReturnedFromBackground)
+    }
+
     @Test fun `test when one activity start, isReturnedFromBackground() is true`() {
         butai.onActivityStarted(null)
         assertTrue(butai.isReturnedFromBackground)

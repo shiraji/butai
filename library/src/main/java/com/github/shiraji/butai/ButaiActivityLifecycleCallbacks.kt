@@ -8,7 +8,7 @@ internal class ButaiActivityLifecycleCallbacks : Application.ActivityLifecycleCa
 
     private var runningActivities = 0
 
-    private var appStatus = AppStatus.FOREGROUND
+    private var appStatus = AppStatus.JUST_APPEARED
 
     override fun onActivityStarted(p0: Activity?) {
         appStatus = when {
