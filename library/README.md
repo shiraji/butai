@@ -4,10 +4,10 @@ This is the module for butai Kotlin implementation.
 
 # How to install?
 
-Use gradle where `LATEST_VERSION` is [![Download](https://api.bintray.com/packages/shiraji/maven/butai/images/download.svg)](https://bintray.com/shiraji/maven/butai/_latestVersion)
+Use gradle where `LATEST_VERSION` is 1.0.0
 
 ```gradle
-compile 'com.github.shiraji:butai:LATEST_VERSION'
+compile 'com.github.shiraji:butai:1.0.0'
 ```
 
 # How to setup?
