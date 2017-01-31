@@ -1,3 +1,7 @@
+### [ver 1.0.2](https://github.com/shiraji/butai/releases/tag/1.0.2)
+
+* Fix dependencies
+
 ### [ver 1.0.1](https://github.com/shiraji/butai/releases/tag/1.0.1)
 
 * Add Java support
