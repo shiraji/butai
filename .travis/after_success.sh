@@ -32,6 +32,7 @@ else
     echo "Start releasing..."
     ./gradlew clean build :library:bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
     ./gradlew :library-java:bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
+    ./gradlew :core:bintrayUpload -PbintrayUser=${USER} -PbintrayKey=$KEY -PdryRun=false
     git checkout master
     git config user.name "Travis CI"
     git config user.email "isogai.shiraji@gmail.com"
