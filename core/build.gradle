@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'com.novoda.bintray-release'
 
 targetCompatibility = JavaVersion.VERSION_1_7
 sourceCompatibility = JavaVersion.VERSION_1_7
@@ -7,4 +8,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     testCompile 'junit:junit:4.12'
+}
+
+publish {
+    userOrg = 'shiraji'
+    groupId = GROUPID
+    artifactId = 'butai-core'
+    version = versionText
+    description = 'Extend classes that have the status the app is foreground/background/just appearing'
+    website = 'https://github.com/shiraji/butai'
+    licences = ['Apache-2.0']
 }
